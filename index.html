@@ -1,0 +1,63 @@
+<html><head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+ <style type="text/css" id="dcoder_stylesheet">div{
+  margin:auto;
+  position:relative;
+  background:red;
+  border:5px outset;
+  
+  width:150px;
+  height:150px;
+  top:40%;
+  border-radius:100px;
+  text-align:center;
+  }
+  body{
+  background:black;
+  }
+  div:active{
+  border:2px outset;
+  }
+ #butt{
+    color:white;
+    position:absolute;
+    top:40%;
+    left:30%;
+    -webkit-user-select:none;
+    }
+    #message{
+      color:white;
+      -webkit-user-select:none;
+      }</style></head> 
+ <body> 
+  <center> 
+   <p id="message"></p> 
+  </center> 
+  <div> 
+   <p id="butt">CLICK</p> 
+  </div> 
+ 
+<script type="text/javascript" id="dcoder_script">$(document).ready(function(){
+  var sec=0;
+  const p=document.getElementById("message");
+  var init_msg="Press and hold the button for a few seconds to find out the truth";
+  p.innerHTML=init_msg;
+  var Id;
+  $("div").on("touchstart",function(){
+    p.innerHTML="measuring pulse rate...<br>finding out the truth...";
+    Id=setInterval(()=>{
+      if(sec++==5){
+        p.innerHTML=init_msg;
+        alert((Math.random()<=0.5)? "YOU ARE LYING":"YOU ARE SAYING THE TRUTH");
+        clearInterval(Id);
+        sec=0;
+        }
+        },1000);
+ });
+ $("div").on("touchend",()=>{sec=0;
+ clearInterval(Id);
+ p.innerHTML=init_msg;
+});
+});</script></body></html>
